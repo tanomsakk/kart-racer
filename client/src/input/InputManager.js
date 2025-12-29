@@ -47,4 +47,8 @@ export class InputManager {
   isResetPressed() {
     return this.keysPressed.has(this.bindings.reset);
   }
+
+  isSpacePressed() {
+    return this.keysPressed.has('Space');
+  }
 }

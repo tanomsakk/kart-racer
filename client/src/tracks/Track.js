@@ -1,4 +1,4 @@
-import { Vector3, MeshBuilder, StandardMaterial, Color3, PhysicsAggregate, PhysicsShapeType } from '@babylonjs/core';
+import { Vector3, MeshBuilder, StandardMaterial, Color3 } from '@babylonjs/core';
 import { COLORS } from '../utils/constants.js';
 
 export class Track {
@@ -18,7 +18,6 @@ export class Track {
     grassMat.diffuseColor = Color3.FromHexString(COLORS.grass);
     ground.material = grassMat;
     ground.position.y = -0.1;
-    new PhysicsAggregate(ground, PhysicsShapeType.BOX, { mass: 0, friction: 0.5 }, this.scene);
     this.meshes.push(ground);
 
     // Build track surface
@@ -132,8 +131,6 @@ export class Track {
     const wallMat = new StandardMaterial(`${name}Mat`, this.scene);
     wallMat.diffuseColor = Color3.FromHexString(COLORS.wall);
     wall.material = wallMat;
-
-    new PhysicsAggregate(wall, PhysicsShapeType.BOX, { mass: 0, friction: 0.3, restitution: 0.5 }, this.scene);
     
     this.walls.push(wall);
     this.meshes.push(wall);
